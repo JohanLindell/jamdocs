@@ -1,3 +1,6 @@
+# Custom Notes
+* See https://gist.github.com/joshangell/6b590ca1953599303e207f89f0181824 for configuring WebStorm to understand GraphQL
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/de44d168-eb1d-47a5-8731-d77bb40af7c8/deploy-status)](https://app.netlify.com/sites/jamdocs/deploys)
 
 # ![Jamdocs](https://github.com/samuelhorn/jamdocs/blob/master/src/assets/img/logo-dark.svg)

@@ -13,15 +13,15 @@ module.exports = function (api) {
 
     const Menu = store.addCollection({typeName: 'Menu'});
 
-    for(const item of data.sidebar){
-    	Menu.addNode({
+    for (const item of data.sidebar) {
+      Menu.addNode({
         section: item.section,
         topics: item.topics
-	    })
+      })
     }
   });
 
-  api.createPages(({ createPage }) => {
+  api.createPages(({createPage}) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api
   })
 };

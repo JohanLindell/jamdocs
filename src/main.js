@@ -4,16 +4,17 @@
 import DefaultLayout from '~/layouts/Default.vue'
 import '~/assets/scss/globals.scss'
 import Vuex from 'vuex'
+
 require('typeface-source-sans-pro');
 
-export default function (Vue, { router, head, isClient, appOptions }) {
+export default function (Vue, {router, head, isClient, appOptions}) {
   Vue.use(Vuex);
 
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout);
 
   // Add attributes to HTML tag
-  head.htmlAttrs = { lang: 'en' };
+  head.htmlAttrs = {lang: 'en'};
 
   head.link.push({
     rel: 'manifest',

@@ -5,14 +5,14 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 const path = require('path');
 
-function addStyleResource (rule) {
+function addStyleResource(rule) {
   rule.use('style-resource')
-    .loader('style-resources-loader')
-    .options({
-      patterns: [
-        path.resolve(__dirname, './src/assets/scss/globals.scss')
-      ],
-    })
+      .loader('style-resources-loader')
+      .options({
+        patterns: [
+          path.resolve(__dirname, './src/assets/scss/globals.scss')
+        ],
+      })
 }
 
 module.exports = {

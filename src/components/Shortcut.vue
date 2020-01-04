@@ -10,33 +10,33 @@
 </template>
 
 <script>
-import { PlayIcon, SlidersIcon, EyeIcon } from 'vue-feather-icons'
+  import {PlayIcon, SlidersIcon, EyeIcon} from 'vue-feather-icons'
 
-export default {
-  components: {
-    PlayIcon,
-    SlidersIcon,
-    EyeIcon
-  },
-  props: {
-    link: {
-      type: String,
-      required: true
+  export default {
+    components: {
+      PlayIcon,
+      SlidersIcon,
+      EyeIcon
     },
-    text: {
-      type: String,
-      required: true
-    },
-    icon: {
-      type: String,
-      required: true
+    props: {
+      link: {
+        type: String,
+        required: true
+      },
+      text: {
+        type: String,
+        required: true
+      },
+      icon: {
+        type: String,
+        required: true
+      }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
-article {
+  article {
     flex: 1 0;
     border: 1px solid shade($sidebarBright, 10%);
     margin: 0 0 1em;
@@ -55,23 +55,23 @@ article {
     }
   }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-svg {
-  width: 2em;
-  height: 2em;
-  margin-bottom: 1em;
-
-  @include respond-above(md) {
-    width: 3em;
-    height: 3em;
+  a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
-}
+
+  svg {
+    width: 2em;
+    height: 2em;
+    margin-bottom: 1em;
+
+    @include respond-above(md) {
+      width: 3em;
+      height: 3em;
+    }
+  }
 </style>
