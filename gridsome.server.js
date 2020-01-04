@@ -21,6 +21,17 @@ module.exports = function (api) {
     }
   })
 
+    api.loadSource(store => {
+
+        const Lang = store.addCollection({typeName: 'Lang'})
+        Lang.addNode({
+            name: "Cool language"
+        })
+        Lang.addNode({
+            name: "Neat language"
+        })
+    })
+
   api.createPages(({ createPage }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api
   })
