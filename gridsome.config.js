@@ -25,7 +25,7 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'docs/**/*.md',
+        path: 'languages/**/*.md',
         typeName: 'Doc',
         remark: {
           plugins: [

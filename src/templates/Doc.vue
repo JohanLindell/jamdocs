@@ -15,6 +15,10 @@
       date (format: "D. MMMM YYYY")
       timeToRead
       content
+      headings(depth: h2) {
+        anchor
+        value
+      }
     }
   }
 </page-query>

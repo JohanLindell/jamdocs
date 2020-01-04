@@ -6,33 +6,41 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = function (api) {
-    api.loadSource(store => {
-        // Use the Data Store API here: https://gridsome.org/docs/data-store-api
+  api.loadSource(store => {
+    // Use the Data Store API here: https://gridsome.org/docs/data-store-api
 
-        const data = require('./data/settings.json');
+    const data = require('./data/settings.json');
 
-        const Menu = store.addCollection({typeName: 'Menu'});
+    const Menu = store.addCollection({typeName: 'Menu'});
 
-        for (const item of data.sidebar) {
-            Menu.addNode({
-                section: item.section,
-                topics: item.topics
-            })
-        }
-    });
+    for (const item of data.sidebar) {
+      Menu.addNode({
+        section: item.section,
+        topics: item.topics
+      })
+    }
+  });
 
-    api.loadSource(store => {
+  api.loadSource(store => {
 
-        const Lang = store.addCollection({typeName: 'Lang'})
+    const Lang = store.addCollection({typeName: 'Lang'});
+    const fs = require('fs');
+    fs.readdir('./languages', function(err, files) {
+      for (const file of files) {
+        const name = file.split('.')[0];
         Lang.addNode({
-            name: "Cool language"
+          name: name.charAt(0).toUpperCase() + name.slice(1),
+          path: "/" + name
         });
-        Lang.addNode({
-            name: "Neat language"
-        })
+      }
     });
+      Lang.addNode({
+      name: "Dummy",
+      path: "/dummy"
+    });
+  });
 
-    api.createPages(({createPage}) => {
-        // Use the Pages API here: https://gridsome.org/docs/pages-api
-    })
+  api.createPages(({createPage}) => {
+    // Use the Pages API here: https://gridsome.org/docs/pages-api
+  })
 };

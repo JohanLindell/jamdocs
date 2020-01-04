@@ -1,52 +1,25 @@
 <template>
   <aside class="sidebar" :class="{'sidebar--open' : this.$store.state.sidebarOpen}">
     <nav>
+      <h3 class="section-title">{{$page.doc.title}}</h3>
       <ul>
-        <li class="section" v-for="{ node } in $static.menu.edges" :key="node.id">
-          <h3 class="section-title">{{node.section}}</h3>
-          <ul>
-            <li v-for="item in node.topics" :key="item.title">
-              <g-link class="topic" :to="'/' + item.slug">{{item.title}}</g-link>
-              <ul v-if="checkAnchors(node.slug, item.slug)" v-for="{ node } in $static.docs.edges" :key="node.id">
-                <li v-for="heading in node.headings" :key="heading.value">
-                  <a class="sub-topic" :href="'/' + item.slug + heading.anchor">{{heading.value}}</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+        <li>Hello there</li>
+        <li>Hello there again</li>
+        <li v-for="heading in $page.doc.headings" :key="heading.value">
+          {{heading.value}}
+<!--          <h4 class="section-title">{{heading.value}}</h4>-->
+<!--          <ul>-->
+<!--            <li v-for="heading in node.headings" :key="heading.value">-->
+<!--&lt;!&ndash;              <a class="sub-topic" :href="'/' + item.slug + heading.anchor">{{heading.value}}</a>&ndash;&gt;-->
+<!--              {{heading.value}}-->
+<!--            </li>-->
+<!--          </ul>-->
         </li>
       </ul>
       <GitLink class="git"/>
     </nav>
   </aside>
 </template>
-
-<static-query>
-  query Menu {
-    menu: allMenu(order:ASC) {
-      edges {
-        node {
-          section
-          topics {
-            title
-            slug
-          }
-        }
-      }
-    }
-    docs: allDoc {
-      edges {
-        node {
-          slug
-          headings {
-            value
-            anchor
-          }
-        }
-      }
-    }
-  }
-</static-query>
 
 <script>
   import GitLink from '~/components/GitLink.vue'

@@ -3,10 +3,8 @@
     <div class="content">
       <h1>{{ $static.metadata.siteName }} - {{ this.description }}</h1>
       <nav>
-        <!-- To use other icons here, you need to import them in the Shortcut component -->
-        <Shortcut link="/getting-started" text="Introduction" icon="play-icon"/>
-        <Shortcut link="/theme-configuration" text="Configuration" icon="sliders-icon"/>
-        <Shortcut link="/theme-configuration#changing-colors" text="Change colors" icon="eye-icon"/>
+<!--        <Shortcut v-for="{ node } in $static.lang.edges" :key=node.name :link="node.path + '#while-loops'" :text=node.name icon="play-icon" />-->
+        <Shortcut v-for="{ node } in $static.lang.edges" :key=node.name :link=node.path :text=node.name icon="play-icon" />
       </nav>
       <GitLink class="git" size="large"/>
     </div>
@@ -17,6 +15,15 @@
   query {
     metadata {
       siteName
+    }
+
+    lang: allLang(order:ASC) {
+      edges {
+        node {
+          name
+          path
+        }
+      }
     }
   }
 </static-query>
