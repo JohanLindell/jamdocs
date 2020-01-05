@@ -3,17 +3,8 @@
     <nav>
       <h3 class="section-title">{{$page.doc.title}}</h3>
       <ul>
-        <li>Hello there</li>
-        <li>Hello there again</li>
         <li v-for="heading in $page.doc.headings" :key="heading.value">
-          {{heading.value}}
-<!--          <h4 class="section-title">{{heading.value}}</h4>-->
-<!--          <ul>-->
-<!--            <li v-for="heading in node.headings" :key="heading.value">-->
-<!--&lt;!&ndash;              <a class="sub-topic" :href="'/' + item.slug + heading.anchor">{{heading.value}}</a>&ndash;&gt;-->
-<!--              {{heading.value}}-->
-<!--            </li>-->
-<!--          </ul>-->
+          <a class="sub-topic" :href=heading.anchor>{{heading.value}}</a>
         </li>
       </ul>
       <GitLink class="git"/>
@@ -36,24 +27,24 @@
     },
     methods: {
       checkAnchors(slug, item) {
-        if (slug == item) {
+        if (slug === item) {
           return true
         }
       },
       stateFromSize: function () {
-        if (window.getComputedStyle(document.body, ':before').content == '"small"') {
+        if (window.getComputedStyle(document.body, ':before').content === '"small"') {
           this.$store.commit('closeSidebar')
         } else {
           this.$store.commit('openSidebar')
         }
       },
       sidebarScroll: function () {
-        let mainNavLinks = document.querySelectorAll('.topic.active + ul .sub-topic')
-        let fromTop = window.scrollY
+        let mainNavLinks = document.querySelectorAll('ul .sub-topic');
+        let fromTop = window.scrollY;
 
         mainNavLinks.forEach(link => {
-          let section = document.querySelector(link.hash)
-          let allCurrent = document.querySelectorAll('.current'), i
+          let section = document.querySelector(link.hash);
+          let allCurrent = document.querySelectorAll('.current'), i;
 
           if (section.offsetTop <= fromTop) {
             for (i = 0; i < allCurrent.length; ++i) {
