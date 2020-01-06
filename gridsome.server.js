@@ -25,19 +25,14 @@ module.exports = function (api) {
 
     const Lang = store.addCollection({typeName: 'Lang'});
     const fs = require('fs');
-    fs.readdir('./languages', function(err, files) {
-      for (const file of files) {
-        const name = file.split('.')[0];
-        Lang.addNode({
-          name: name.charAt(0).toUpperCase() + name.slice(1),
-          path: "/" + name
-        });
-      }
-    });
+    const files = fs.readdirSync('./languages');
+    for (const file of files) {
+      const name = file.split('.')[0];
       Lang.addNode({
-      name: "Dummy",
-      path: "/dummy"
-    });
+        name: name.charAt(0).toUpperCase() + name.slice(1),
+        path: "/" + name
+      });
+    }
   });
 
   api.createPages(({createPage}) => {

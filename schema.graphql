@@ -71,6 +71,35 @@ type Doc_FileInfo {
   path: String
 }
 
+type Lang implements Node {
+  belongsTo(
+    filter: BelongsToFilterInput,
+    limit: Int,
+    order: SortOrder = DESC,
+    page: Int,
+    #Defaults to 25 when page is provided.
+    perPage: Int,
+    skip: Int = 0,
+    sort: [SortArgument!],
+    sortBy: String = "date"
+  ): NodeBelongsTo
+  id: ID!
+  name: String
+  path(to: String = "default"): String
+}
+
+type LangConnection implements NodeConnection {
+  edges: [LangEdge]
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type LangEdge implements NodeConnectionEdge {
+  next: Lang
+  node: Lang
+  previous: Lang
+}
+
 type Menu implements Node {
   belongsTo(
     filter: BelongsToFilterInput,
@@ -153,6 +182,18 @@ type Query {
     sort: [SortArgument],
     sortBy: String = "date"
   ): DocConnection
+  allLang(
+    #Filter for Lang nodes.
+    filter: LangFilterInput,
+    limit: Int,
+    order: SortOrder = DESC,
+    page: Int,
+    #Defaults to 25 when page is provided.
+    perPage: Int,
+    skip: Int = 0,
+    sort: [SortArgument],
+    sortBy: String = "date"
+  ): LangConnection
   allMenu(
     #Filter for Menu nodes.
     filter: MenuFilterInput,
@@ -175,6 +216,12 @@ type Query {
     nullable: Boolean = false,
     path: String
   ): Doc
+  lang(
+    id: ID,
+    #Will return an error if not nullable.
+    nullable: Boolean = false,
+    path: String
+  ): Lang
   menu(
     id: ID,
     #Will return an error if not nullable.
@@ -223,6 +270,7 @@ enum SortOrder {
 
 enum TypeName {
   Doc
+  Lang
   Menu
 }
 
@@ -295,6 +343,12 @@ input JSONQueryOperatorInput {
   nin: [JSON]
   "Filter by property matching provided regular expression."
   regex: String
+}
+
+input LangFilterInput {
+  id: IDQueryOperatorInput
+  name: StringQueryOperatorInput
+  path: StringQueryOperatorInput
 }
 
 input MenuFilterInput {

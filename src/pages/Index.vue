@@ -3,8 +3,12 @@
     <div class="content">
       <h1>{{ $static.metadata.siteName }} - {{ this.description }}</h1>
       <nav>
-<!--        <Shortcut v-for="{ node } in $static.lang.edges" :key=node.name :link="node.path + '#while-loops'" :text=node.name icon="play-icon" />-->
-        <Shortcut v-for="{ node } in $static.lang.edges" :key=node.name :link=node.path :text=node.name icon="play-icon" />
+        <Shortcut
+            v-for="{ node } in $static.lang.edges"
+            :key=node.name
+            :link=node.path
+            :text=node.name
+            icon="play-icon"/>
       </nav>
       <GitLink class="git" size="large"/>
     </div>
