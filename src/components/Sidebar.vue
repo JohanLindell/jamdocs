@@ -1,9 +1,9 @@
 <template>
   <aside class="sidebar" :class="{'sidebar--open' : this.$store.state.sidebarOpen}">
     <nav>
-      <h3 class="section-title">{{$page.doc.title}}</h3>
+      <h3 class="section-title">{{title}}</h3>
       <ul>
-        <li v-for="heading in $page.doc.headings" :key="heading.value">
+        <li v-for="heading in headings" :key="heading.value">
           <a class="sub-topic" :href=heading.anchor>{{heading.value}}</a>
         </li>
       </ul>
@@ -24,6 +24,16 @@
       '$route'() {
         this.$store.commit('closeSidebar')
       }
+    },
+    props: {
+      title: {
+        type: String,
+        default: "No language"
+      },
+      headings: {
+        type: Array,
+        default: [{ id: "Hello", value: "World", anchor: "Anchor"}]
+      },
     },
     methods: {
       checkAnchors(slug, item) {

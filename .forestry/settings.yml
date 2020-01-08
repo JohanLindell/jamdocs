@@ -4,11 +4,8 @@ auto_deploy: false
 admin_path: ''
 webhook_url: 
 sections:
-- type: document
-  path: data/settings.json
-  label: Menu
 - type: directory
-  path: docs
+  path: languages
   label: Docs
   create: all
   match: "**/*"
