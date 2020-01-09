@@ -2,7 +2,6 @@
   <article>
     <h2>
       <g-link :to="link">
-        <component :is="icon"></component>
         {{ text }}
       </g-link>
     </h2>
@@ -10,14 +9,8 @@
 </template>
 
 <script>
-  import {PlayIcon, SlidersIcon, EyeIcon} from 'vue-feather-icons'
 
   export default {
-    components: {
-      PlayIcon,
-      SlidersIcon,
-      EyeIcon
-    },
     props: {
       link: {
         type: String,
@@ -27,10 +20,6 @@
         type: String,
         required: true
       },
-      icon: {
-        type: String,
-        required: true
-      }
     }
   }
 </script>

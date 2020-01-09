@@ -3,12 +3,7 @@
     <div class="content">
       <h1>{{ $static.metadata.siteName }} - {{ this.description }}</h1>
       <nav>
-        <Shortcut
-            v-for="{ node } in $static.lang.edges"
-            :key=node.name
-            :link=node.path
-            :text=node.name
-            icon="play-icon"/>
+        <LanguageButton v-for="{ node } in $static.lang.edges" :key="node.name" :link="node.path" :text="node.name"/>
       </nav>
       <GitLink class="git" size="large"/>
     </div>
@@ -34,12 +29,12 @@
 
 <script>
   import GitLink from '~/components/GitLink.vue'
-  import Shortcut from '~/components/Shortcut.vue'
+  import LanguageButton from '~/components/LanguageButton.vue'
 
   export default {
     components: {
       GitLink,
-      Shortcut
+      LanguageButton
     },
     data() {
       return {

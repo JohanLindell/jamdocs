@@ -19,7 +19,7 @@
       },
       text: {
         type: String,
-        default: 'Fork me on Github'
+        default: 'Contribute'
       }
     }
   }
