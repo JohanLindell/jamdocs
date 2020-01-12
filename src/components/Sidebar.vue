@@ -32,7 +32,7 @@
       },
       headings: {
         type: Array,
-        default: [{ id: "Hello", value: "World", anchor: "Anchor"}]
+        default: []
       },
     },
     methods: {

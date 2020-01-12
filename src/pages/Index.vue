@@ -38,7 +38,7 @@
     },
     data() {
       return {
-        description: 'The ultimate static generated documentation theme for the JAM-stack'
+        description: 'Quick recaps of most languages'
       }
     },
     metaInfo() {
@@ -48,7 +48,7 @@
           {
             key: 'description',
             name: 'description',
-            content: 'A theme for static site documentation based on Gridsome, ready to deploy to Netlify in one click.'
+            content: 'Quick syntax recaps of most languages.'
           }
         ]
       }
